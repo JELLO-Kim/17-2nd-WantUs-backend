@@ -26,15 +26,14 @@
 <br>
 
 # 🛠 기술 스택
-## BackEnd 기술 스택
-- Django
-- Python
-- MySQL
-- Bcrypt, JWT
-- AQueryTool
-- KaKaoTalk API
-- Django-unit test
-- AWS RDS, S3
+- Lagnague : Python 3
+- Framework : Django
+- Modeling : AQueryTool
+- Database : MySQL
+- 인증, 인가 : Bcrypt, JWT
+- Social Login : KakaoTalk API
+- test : Django의 python 상속 unit test
+- AWS : RDS, S3
 
 <br>
 <br>
@@ -43,17 +42,152 @@
 
 ## BackEnd (담당한 기능)
 
-- KakaoTal Login API를 이용한 회원가입&로그인 기능 구현
-- 비밀번호 암호화, 토큰 발행
-- 회원 유효성 판단(login_decorator 작성)
-- 비회원용 login_decorator (non_user_accept_decorator)작성
-- python에서 제공하는 Pagination 기능을 통해 채용 list의 pagination 기능 구현
-- 로그인 user의 사이트 기본 제공 양식 이력서 생성과 삭제 기능 구현
-- 마이페이지 : 로그인 user의 지원 현황 확인
-- 마이페이지 : 로그인 user의 "좋아요"와 "북마크"한 채용공고 확인
+- KakaoTal Login API를 이용한 소셜 회원가입&로그인 API 구현
+- Bcrypt와 JWT를 통해 비밀번호 암호화와 토큰 발행
+- 회원 유효성 판단(login_decorator) 함수 작성
+- 비회원 허용 유효성 판단 (non_user_accept_decorator) 함수 작성
+- python에서 제공하는 Pagination 기능을 통해 채용 list의 pagination 구현
+- 로그인 user의 사이트 기본 제공 양식 이력서 생성과 삭제 API 구현
+- 마이페이지 : 로그인 user의 지원 현황 확인 API 구현
+- 마이페이지 : 로그인 user의 "좋아요"와 "북마크"한 채용공고 내용 반환 API 구현
+- Django환경에서 unit test 구현
 
 <br>
 <br>
+
+# Project 구조
+```python
+.
+├── __pycache__
+│   ├── my_settings.cpython-38.pyc
+│   ├── my_settings.cpython-39.pyc
+│   └── utils.cpython-39.pyc
+├── apply
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-39.pyc
+│   │   ├── models.cpython-39.pyc
+│   │   ├── tests.cpython-39.pyc
+│   │   ├── urls.cpython-39.pyc
+│   │   └── views.cpython-39.pyc
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_auto_20210310_1648.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-39.pyc
+│   │       ├── 0002_auto_20210303_1856.cpython-39.pyc
+│   │       ├── 0002_auto_20210304_1641.cpython-39.pyc
+│   │       ├── 0002_auto_20210305_1352.cpython-39.pyc
+│   │       ├── 0002_auto_20210310_1648.cpython-39.pyc
+│   │       ├── 0003_auto_20210310_0331.cpython-39.pyc
+│   │       └── __init__.cpython-39.pyc
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── manage.py
+├── my_settings.py
+├── posting
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-39.pyc
+│   │   ├── models.cpython-39.pyc
+│   │   ├── tests.cpython-39.pyc
+│   │   ├── urls.cpython-39.pyc
+│   │   └── views.cpython-39.pyc
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── 0002_auto_20210310_1648.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-39.pyc
+│   │       ├── 0002_auto_20210303_1856.cpython-39.pyc
+│   │       ├── 0002_auto_20210304_1641.cpython-39.pyc
+│   │       ├── 0002_auto_20210305_1352.cpython-39.pyc
+│   │       ├── 0002_auto_20210310_1648.cpython-39.pyc
+│   │       ├── 0003_auto_20210304_1547.cpython-39.pyc
+│   │       ├── 0003_auto_20210304_2340.cpython-39.pyc
+│   │       ├── 0003_posting_work_experience.cpython-39.pyc
+│   │       ├── 0004_auto_20210304_1816.cpython-39.pyc
+│   │       ├── 0004_auto_20210304_2358.cpython-39.pyc
+│   │       └── __init__.cpython-39.pyc
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── pull_request_template.md
+├── requirements.txt
+├── resume
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-39.pyc
+│   │   ├── models.cpython-39.pyc
+│   │   ├── tests.cpython-39.pyc
+│   │   ├── urls.cpython-39.pyc
+│   │   └── views.cpython-39.pyc
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-39.pyc
+│   │       ├── 0002_auto_20210304_1547.cpython-39.pyc
+│   │       ├── 0002_auto_20210307_1329.cpython-39.pyc
+│   │       ├── 0003_auto_20210307_1330.cpython-39.pyc
+│   │       ├── 0004_auto_20210310_0403.cpython-39.pyc
+│   │       ├── 0004_resumefile_uuidcode.cpython-39.pyc
+│   │       ├── 0005_auto_20210310_1019.cpython-39.pyc
+│   │       ├── 0006_merge_20210310_1223.cpython-39.pyc
+│   │       ├── 0007_resumefile_is_default.cpython-39.pyc
+│   │       └── __init__.cpython-39.pyc
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── user
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-39.pyc
+│   │   ├── models.cpython-39.pyc
+│   │   ├── tests.cpython-39.pyc
+│   │   ├── urls.cpython-39.pyc
+│   │   └── views.cpython-39.pyc
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   │   ├── 0001_initial.py
+│   │   ├── __init__.py
+│   │   └── __pycache__
+│   │       ├── 0001_initial.cpython-39.pyc
+│   │       ├── 0002_auto_20210303_1909.cpython-39.pyc
+│   │       ├── 0003_auto_20210304_1547.cpython-39.pyc
+│   │       └── __init__.cpython-39.pyc
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── utils.py
+└── wantus
+    ├── __init__.py
+    ├── __pycache__
+    │   ├── __init__.cpython-38.pyc
+    │   ├── __init__.cpython-39.pyc
+    │   ├── settings.cpython-38.pyc
+    │   ├── settings.cpython-39.pyc
+    │   ├── urls.cpython-39.pyc
+    │   └── wsgi.cpython-39.pyc
+    ├── asgi.py
+    ├── asset_storage.py
+    ├── settings.py
+    ├── urls.py
+    └── wsgi.py
+```
 
 # ✅ 기능 구현 상세 ✅
 

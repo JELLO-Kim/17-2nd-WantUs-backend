@@ -29,6 +29,12 @@ from posting.models import (
 class ApplyView(View):
     @login_decorator
     def get(self, request):
+        """[Apply] 유저가 "지원하기" 눌렀을시 유저의 정보와 이력서 목록 반환
+        Args:
+            - user : requset의 Header에 담겨져 오는 token으로 회원 유효성 검사 후 user객체 반환
+        Return:
+            - 200: 'message':'SUCCESS', 'data': 유저의 정보 + 이력서 목록}
+        """
         user = request.user
 
         resumes     = Resume.objects.filter(user=user).values(\
@@ -60,14 +66,25 @@ class ApplyView(View):
 
     @login_decorator
     def post(self, request):
+        """[Apply] 채용 상세페이지에서 "지원하기"
+        Args:
+            - user : requset의 Header에 담겨져 오는 token으로 회원 유효성 검사 후 user객체 반환
+            - posting: body에 담겨오는 지원하는 채용공고의 id
+        Return:
+            - 201: {'message':'SUCCESS'}
+            - 400 (채용공고가 유효하지 않습니다): body에 채용공고의 id가 담겨있지 않을 경우
+        Note:
+            - 어떤 이력서로 지원하였는지에 대한 기록하는 column 존재하지 않음.
+        """
         data = json.loads(request.body)
 
         user    = request.user
         posting = data.get('posting', None)
 
         if not posting:
-            return JsonResponse({'message':'KEY_ERROR'}, status=400)
-
+            return JsonResponse({'message':'채용공고가 유효하지 않습니다.'}, status=400)
+        
+        # "누가" "어떤" 공고에 지원하였는가를 기록한다.
         Apply.objects.create(
             user = user,
             posting_id = posting
@@ -78,6 +95,19 @@ class ApplyView(View):
 class MyWantUsView(View):
     @login_decorator
     def get(self, request):
+       """[Apply] 로그인 유저의 마이페이지 화면
+        Args:
+            - user : requset의 Header에 담겨져 오는 token으로 회원 유효성 검사 후 user객체 반환
+        Return:
+            - 200: {
+                    'user' : 로그인 유저의 정보,
+                    "apply" : 로그인 유저의 지원 현황,
+                    "book" : 로그인 유저가 북마크한 공고,
+                    "like" : 로그인 유저가 좋아요한 공고
+                    }
+        Note:
+            - "좋아요" 한 공고와 "북마크"한 공고의 내역이 다르게 보임
+        """
         user    = request.user
         user_info = {
                 'profile'       : user.image_url,
@@ -97,6 +127,7 @@ class MyWantUsView(View):
                 "stepFour"  : user.apply_set.filter(process_status__name = FOURTH).count()
                 }
 
+        # datetime 형식 가공
         DATETIME_ONLY_TIME = 10
         book_mark_posting = [{
             'id'            : posting.id,

@@ -5,24 +5,13 @@ from django.core.paginator  import Paginator
 from django.http            import JsonResponse
 from django.views           import View
 from django.db.models       import (
-    Count,
-    Prefetch,
-    Q
+        Count,
+        Prefetch,
+        Q
 )
-
-from posting.models import (
-    Posting, 
-    CompanyDetail, 
-    CompanyTag,
-    County,
-    State,
-    Tag,
-    TagDetail,
-    JobCategory
-)
+from utils                  import login_decorator, non_user_accept_decorator
 from user.models            import User
 from resume.models          import Resume, ResumeFile, ResumeStatus
-from utils                  import login_decorator, non_user_accept_decorator
 from posting.models         import (
         Posting,
         Occupation,
@@ -35,7 +24,8 @@ from posting.models         import (
         BookMark,
         CompanyTag,
         Tag,
-        TagDetail
+        TagDetail,
+        JobCategory
 )
 
 LIST_LIMIT_NUMBER = 4

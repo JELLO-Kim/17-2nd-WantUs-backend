@@ -54,12 +54,24 @@ class SignView(View):
 class ProfileView(View):
     @login_decorator
     def patch(self, request):
+        """[User] 마이페이지에서 로그인 유저의 상세정보 수정
+        Args:
+            - user : requset의 Header에 담겨져 오는 token으로 회원 유효성 검사 후 user객체 반환
+            - name: 수정하고자 하는 이름. 없을 경우 기존의 이름으로 지정
+            - workExperince: 수정하고자 하는 경력 사항. 없을 경우 기존의 경력으로 지정.
+            - salary: 수정하고자 하는 연봉 정보. 없을 경우 기존의 연봉 정보로 지정.
+            - phoneNumber: 수정하고자 하는 핸드폰 번호. 없을 경우 기존의 핸드폰 번호로 지정.
+        Return:
+            - 201: {'message':'SUCCESS'}
+        Note:
+            - 새로운 기술스택과 업무직군 변동은 "추가" 만 가능
+        """
         try:
             data = json.loads(request.body)
 
             user            = request.user
             name            = data.get('name', user.name)
-            work_experience = data.get('workExperience', user.work_experience)
+            work_experience = data.get('workExperience', user.work_experience) # 신입/경력
             salary          = data.get('salary', user.salary)
             phone_number    = data.get('phoneNumber', user.phone_number)
 
@@ -67,11 +79,15 @@ class ProfileView(View):
             user.work_experience = work_experience
             user.salary          = salary
             user.phone_number    = phone_number
+
+            # 수정 내용을 반영하여 새롭게 저장
             user.save()
 
+            # 새로운 기술스택이 추가될 경우
             for skill in data.get('skills', []):
                 user.skill.add(skill)
             
+            # 새로운 업무직군이 추가될 경우
             for job in data.get('jobCategory', []):
                 user.job_category.add(job)
         
@@ -79,4 +95,3 @@ class ProfileView(View):
             return JsonResponse({'message':'JSON_DECODE_ERROR'}, status=400)
         
         return JsonResponse({'message':'SUCCESS'}, status=201)
-

@@ -20,6 +20,13 @@ from user.models    import (
 
 class SignView(View):
     def get(self, request):
+        """
+        Args:
+            - Authorization: kakaoTalk API로 소셜로그인 진행 시 kakaoTalk에서 발급해 주는 전용 token
+        Return:
+            - 200 (기존에 회원가입된 유저일 경우 로그인 진행) : {'message' : 'SUCCESS', 'accessToken' : 우리 API에서 발급해준 access_token}
+            - 201 (신규 회원일 경우 회원가입과 동시에 로그인 진행): {'message' : 'SUCCESS', 'accessToken' : 우리 API에서 발급해준 access_token}
+        """
         try:
             kakao_token  = request.headers["Authorization"]
             headers      = {'Authorization' : f"Bearer {kakao_token}"}

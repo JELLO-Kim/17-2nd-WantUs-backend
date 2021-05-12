@@ -31,6 +31,7 @@ class ResumeFilewUploadView(View):
             - file 명과 확장자명으로 file 유효성을 판단
         """
         user = request.user
+        user = User.objects.get(id=4)
         # 빈 파일일 경우 (파일명의 길이가 0일 경우) validation
         if request.FILES.__len__() == 0:
             return JsonResponse({"message": "FILE_DOES_NOT_EXIST"}, status=400)

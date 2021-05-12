@@ -270,9 +270,7 @@ class RelatedPostingView(View):
             posting         = Posting.objects.get(id=posting_id)
             posting_related = Posting.objects.filter(job_category=posting.job_category).exclude(id=posting_id).order_by('id')
             limit_page      = math.ceil(posting_related.count()/PER_PAGE)
-            print("limit_page??????????", limit_page)
             page            = request.GET.get('page', 1)
-            print("page?????????", page)
             paginator       = Paginator(posting_related, PER_PAGE)
 
             if int(page) > limit_page:

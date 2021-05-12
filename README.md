@@ -58,32 +58,12 @@
 # Project 구조
 ```python
 .
-├── __pycache__
-│   ├── my_settings.cpython-38.pyc
-│   ├── my_settings.cpython-39.pyc
-│   └── utils.cpython-39.pyc
 ├── apply
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-39.pyc
-│   │   ├── models.cpython-39.pyc
-│   │   ├── tests.cpython-39.pyc
-│   │   ├── urls.cpython-39.pyc
-│   │   └── views.cpython-39.pyc
 │   ├── admin.py
 │   ├── apps.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
-│   │   ├── 0002_auto_20210310_1648.py
-│   │   ├── __init__.py
-│   │   └── __pycache__
-│   │       ├── 0001_initial.cpython-39.pyc
-│   │       ├── 0002_auto_20210303_1856.cpython-39.pyc
-│   │       ├── 0002_auto_20210304_1641.cpython-39.pyc
-│   │       ├── 0002_auto_20210305_1352.cpython-39.pyc
-│   │       ├── 0002_auto_20210310_1648.cpython-39.pyc
-│   │       ├── 0003_auto_20210310_0331.cpython-39.pyc
-│   │       └── __init__.cpython-39.pyc
 │   ├── models.py
 │   ├── tests.py
 │   ├── urls.py
@@ -92,30 +72,10 @@
 ├── my_settings.py
 ├── posting
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-39.pyc
-│   │   ├── models.cpython-39.pyc
-│   │   ├── tests.cpython-39.pyc
-│   │   ├── urls.cpython-39.pyc
-│   │   └── views.cpython-39.pyc
 │   ├── admin.py
 │   ├── apps.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
-│   │   ├── 0002_auto_20210310_1648.py
-│   │   ├── __init__.py
-│   │   └── __pycache__
-│   │       ├── 0001_initial.cpython-39.pyc
-│   │       ├── 0002_auto_20210303_1856.cpython-39.pyc
-│   │       ├── 0002_auto_20210304_1641.cpython-39.pyc
-│   │       ├── 0002_auto_20210305_1352.cpython-39.pyc
-│   │       ├── 0002_auto_20210310_1648.cpython-39.pyc
-│   │       ├── 0003_auto_20210304_1547.cpython-39.pyc
-│   │       ├── 0003_auto_20210304_2340.cpython-39.pyc
-│   │       ├── 0003_posting_work_experience.cpython-39.pyc
-│   │       ├── 0004_auto_20210304_1816.cpython-39.pyc
-│   │       ├── 0004_auto_20210304_2358.cpython-39.pyc
-│   │       └── __init__.cpython-39.pyc
 │   ├── models.py
 │   ├── tests.py
 │   ├── urls.py
@@ -124,50 +84,20 @@
 ├── requirements.txt
 ├── resume
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-39.pyc
-│   │   ├── models.cpython-39.pyc
-│   │   ├── tests.cpython-39.pyc
-│   │   ├── urls.cpython-39.pyc
-│   │   └── views.cpython-39.pyc
 │   ├── admin.py
 │   ├── apps.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
-│   │   ├── __init__.py
-│   │   └── __pycache__
-│   │       ├── 0001_initial.cpython-39.pyc
-│   │       ├── 0002_auto_20210304_1547.cpython-39.pyc
-│   │       ├── 0002_auto_20210307_1329.cpython-39.pyc
-│   │       ├── 0003_auto_20210307_1330.cpython-39.pyc
-│   │       ├── 0004_auto_20210310_0403.cpython-39.pyc
-│   │       ├── 0004_resumefile_uuidcode.cpython-39.pyc
-│   │       ├── 0005_auto_20210310_1019.cpython-39.pyc
-│   │       ├── 0006_merge_20210310_1223.cpython-39.pyc
-│   │       ├── 0007_resumefile_is_default.cpython-39.pyc
-│   │       └── __init__.cpython-39.pyc
 │   ├── models.py
 │   ├── tests.py
 │   ├── urls.py
 │   └── views.py
 ├── user
 │   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-39.pyc
-│   │   ├── models.cpython-39.pyc
-│   │   ├── tests.cpython-39.pyc
-│   │   ├── urls.cpython-39.pyc
-│   │   └── views.cpython-39.pyc
 │   ├── admin.py
 │   ├── apps.py
 │   ├── migrations
 │   │   ├── 0001_initial.py
-│   │   ├── __init__.py
-│   │   └── __pycache__
-│   │       ├── 0001_initial.cpython-39.pyc
-│   │       ├── 0002_auto_20210303_1909.cpython-39.pyc
-│   │       ├── 0003_auto_20210304_1547.cpython-39.pyc
-│   │       └── __init__.cpython-39.pyc
 │   ├── models.py
 │   ├── tests.py
 │   ├── urls.py
@@ -175,13 +105,6 @@
 ├── utils.py
 └── wantus
     ├── __init__.py
-    ├── __pycache__
-    │   ├── __init__.cpython-38.pyc
-    │   ├── __init__.cpython-39.pyc
-    │   ├── settings.cpython-38.pyc
-    │   ├── settings.cpython-39.pyc
-    │   ├── urls.cpython-39.pyc
-    │   └── wsgi.cpython-39.pyc
     ├── asgi.py
     ├── asset_storage.py
     ├── settings.py
